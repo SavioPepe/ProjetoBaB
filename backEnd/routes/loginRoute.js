@@ -1,6 +1,13 @@
 const express = require('express');
 const path = require('path');
 const router = express.Router();
+//const {obterLogin,inserirLogin,atualizarLogin,deletarLogin,verificarLogin} = require('../services/loginService');
+//obterLogin,inserirLogin,atualizarLogin,deletarLogin,validarLogin.
+
+
+
+
+
 
 // Rota para servir a página de login
 router.get('/login', (req, res) => {

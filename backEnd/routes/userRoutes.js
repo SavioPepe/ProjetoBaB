@@ -2,6 +2,11 @@ const express = require('express');
 const path = require('path');
 const router = express.Router();
 const {inserirUsuario, atualizarUsuario,deletarUsuario} = require('../services/userService');
+//obterUsuario,inserirUsuario,atualizarUsuario,deletarUsuario,obterUsuarioId
+
+
+
+
 
 // Rota para servir a página de Usuário
 router.get('/user', (req, res) => {

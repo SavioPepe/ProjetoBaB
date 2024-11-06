@@ -1,6 +1,13 @@
 const express = require('express');
 const path = require('path');
 const router = express.Router();
+const {obterTaloesEmManutencao,inserirTalaoEmManutencao,atualizarTalaoEmManutencao,deletarTalaoEmManutencao} = require('../services/maintenanceTaloesService');
+//obterTaloes,atualizarTaloes,deletarTaloes
+
+
+
+
+
 
 // Rota para servir a página de manutenção de talões
 router.get('/maintenance-taloes', (req, res) => {
@@ -14,7 +21,7 @@ router.post('/register-add-talao', async (req, res) => {
     const { numero, descricao, data, responsavel } = req.body;
 
     try {
-        const novoTalao = await inserirTalao(numero, descricao, data, responsavel);
+        const novoTalao = await inserirTalaoEmManutencao(numero, descricao, data, responsavel);
         res.status(201).json({ message: 'Talão de manutenção adicionado com sucesso!', talao: novoTalao });
     } catch (erro) {
         res.status(500).json({ message: 'Erro ao adicionar talão de manutenção', error: erro.message });
@@ -27,7 +34,7 @@ router.put('/update-talao/:id', async (req, res) => {
     const { numero, descricao, data, responsavel } = req.body;
 
     try {
-        const talaoAtualizado = await atualizarTalao(id, numero, descricao, data, responsavel);
+        const talaoAtualizado = await atualizarTalaoEmManutencao(id, numero, descricao, data, responsavel);
         res.status(200).json({ message: 'Talão de manutenção atualizado com sucesso!', talao: talaoAtualizado });
     } catch (erro) {
         res.status(500).json({ message: 'Erro ao atualizar talão de manutenção', error: erro.message });
@@ -39,7 +46,7 @@ router.delete('/delete-talao/:id', async (req, res) => {
     const { id } = req.params;
 
     try {
-        await deletarTalao(id);
+        await deletarTalaoEmManutencao(id);
         res.status(200).json({ message: 'Talão de manutenção deletado com sucesso!' });
     } catch (erro) {
         res.status(500).json({ message: 'Erro ao deletar talão de manutenção', error: erro.message });

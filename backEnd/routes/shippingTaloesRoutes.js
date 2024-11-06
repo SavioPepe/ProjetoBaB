@@ -1,6 +1,11 @@
 const express = require('express');
 const path = require('path');
 const router = express.Router();
+const {obterEnvioTalao,inserirEnvioTalao,atualizarEnvioTalao,deletarEnvioTalao} = require('../services/shippingTaloes');
+//cadastraEnvio, obtemEnvio,historicoEnvio,obterEnvioId
+
+
+
 
 // Rota para servir a página de envios de talões
 router.get('/shipping-taloes', (req, res) => {

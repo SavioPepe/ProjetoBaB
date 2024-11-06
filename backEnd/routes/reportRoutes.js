@@ -1,6 +1,11 @@
 const express = require('express');
 const path = require('path');
 const router = express.Router();
+const {obterRelatorioCompleto,obterRelatorioPorDataRecebimento,obterRelatorioPorStatus,obterRelatorioDadosEspecificos} = require('../services/reportService');
+//obterRelatorioPerfilUsuario,obterRelatorioTaloesEnviados,obterRelatorioTaloesRecebidos,obterRelatorioManutencaoTaloes,obterRelatorioEstoque
+
+
+
 
 // Rota para servir a página de relatórios
 router.get('/report', (req, res) => {

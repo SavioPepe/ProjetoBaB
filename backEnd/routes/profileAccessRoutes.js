@@ -1,6 +1,14 @@
 const express = require('express');
 const path = require('path');
 const router = express.Router();
+const {obterPerfilAcesso,inserirPerfilAcesso,atualizarPerfilAcesso,deletarPerfilAcesso,visualizarPerfisAcesso} = require('../services/profileAccessService');
+//obterPerfil,inserirPerfil,atualizarPerfil,deletarPerfil,vincularPerfil,obterVincularPerfil
+
+
+
+
+
+
 
 // Rota para servir a página de acesso do perfil
 router.get('/profile-access', (req, res) => {
@@ -14,7 +22,7 @@ router.post('/register-profile-access', async (req, res) => {
     const { userId, acesso } = req.body;
 
     try {
-        const perfilAcesso = await salvarAcessoPerfil(userId, acesso);
+        const perfilAcesso = await inserirPerfilAcesso(userId, acesso);
         res.status(201).json({ message: 'Acesso do perfil salvo com sucesso!', perfilAcesso });
     } catch (erro) {
         res.status(500).json({ message: 'Erro ao salvar acesso do perfil', error: erro.message });
@@ -27,7 +35,7 @@ router.put('/update-profile-access/:userId', async (req, res) => {
     const { acesso } = req.body;
 
     try {
-        const perfilAcessoAtualizado = await atualizarAcessoPerfil(userId, acesso);
+        const perfilAcessoAtualizado = await atualizarPerfilAcesso(userId, acesso);
         res.status(200).json({ message: 'Acesso do perfil atualizado com sucesso!', perfilAcesso: perfilAcessoAtualizado });
     } catch (erro) {
         res.status(500).json({ message: 'Erro ao atualizar acesso do perfil', error: erro.message });
@@ -39,7 +47,7 @@ router.delete('/delete-profile-access/:userId', async (req, res) => {
     const { userId } = req.params;
 
     try {
-        await deletarAcessoPerfil(userId);
+        await deletarPerfilAcesso(userId);
         res.status(200).json({ message: 'Acesso do perfil deletado com sucesso!' });
     } catch (erro) {
         res.status(500).json({ message: 'Erro ao deletar acesso do perfil', error: erro.message });

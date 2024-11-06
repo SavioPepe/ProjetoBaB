@@ -1,6 +1,13 @@
 const express = require('express');
 const path = require('path');
 const router = express.Router();
+const {obterEstoqueTaloes,inserirTalaoNoEstoque,atualizarTalaoNoEstoque,deletarTalaoDoEstoque} = require('../services/stockService');
+//obterEstoque,inserirEstoque,atualizarEstoque,deletarEstoque
+
+
+
+
+
 
 // Rota para servir a página de estoque
 router.get('/stock', (req, res) => {
@@ -14,7 +21,7 @@ router.post('/register-stock', async (req, res) => {
     const { nome, quantidade, descricao } = req.body;
 
     try {
-        const novoItemEstoque = await adicionarItemEstoque(nome, quantidade, descricao);
+        const novoItemEstoque = await inserirTalaoNoEstoque(nome, quantidade, descricao);
         res.status(201).json({ message: 'Item adicionado ao estoque com sucesso!', itemEstoque: novoItemEstoque });
     } catch (erro) {
         res.status(500).json({ message: 'Erro ao adicionar item no estoque', error: erro.message });
@@ -27,7 +34,7 @@ router.put('/update-stock/:id', async (req, res) => {
     const { nome, quantidade, descricao } = req.body;
 
     try {
-        const itemAtualizado = await atualizarEstoque(id, nome, quantidade, descricao);
+        const itemAtualizado = await atualizarTalaoNoEstoque(id, nome, quantidade, descricao);
         res.status(200).json({ message: 'Item no estoque atualizado com sucesso!', itemEstoque: itemAtualizado });
     } catch (erro) {
         res.status(500).json({ message: 'Erro ao atualizar item no estoque', error: erro.message });
@@ -39,7 +46,7 @@ router.delete('/delete-stock/:id', async (req, res) => {
     const { id } = req.params;
 
     try {
-        await deletarItemEstoque(id);
+        await deletarTalaoDoEstoque(id);
         res.status(200).json({ message: 'Item do estoque removido com sucesso!' });
     } catch (erro) {
         res.status(500).json({ message: 'Erro ao remover item do estoque', error: erro.message });

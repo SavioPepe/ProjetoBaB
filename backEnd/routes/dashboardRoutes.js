@@ -1,6 +1,11 @@
 const express = require('express');
 const path = require('path');
 const router = express.Router();
+//const {obterDadosDashboard,obterDadosDashboardPorId,inserirDadosDashboard,atualizarDadosDashboard,deletarDadosDashboard} = require('.../services/dashboardService.js');
+//obtemTalaoEnviado,obtemTalaoRecebidos,obtemEstoqueAtual,obtemUsuariosAtivos
+
+
+
 
 // Método GET para exibir a página do dashboard
 router.get('/dashboard', (req, res) => {

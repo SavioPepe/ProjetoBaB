@@ -14,7 +14,7 @@ async function obterRelatorioCompleto() {
 }
 
 // Função para gerar relatório de talões com filtro por data de recebimento
-async function obeterRelatorioPorDataRecebimento() {
+async function obterRelatorioPorDataRecebimento() {
     const query = `
         SELECT * FROM taloes_relatorio
         WHERE data_recebimento IS NOT NULL
@@ -67,7 +67,7 @@ async function obterRelatorioDadosEspecificos(dataInicio, dataFim) {
 
 module.exports = { 
     obterRelatorioCompleto,
-    obeterRelatorioPorDataRecebimento,
+    obterRelatorioPorDataRecebimento,
     obterRelatorioPorStatus,
     obterRelatorioDadosEspecificos
 };

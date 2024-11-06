@@ -1,6 +1,15 @@
 const express = require('express');
 const path = require('path');
 const router = express.Router();
+const {obterLojas,inserirLoja,atualizarLoja,deletarLoja} = require('../services/storesService')
+//obterLoja,inserirLoja
+
+
+
+
+
+
+
 
 // Rota para servir a página de lojas
 router.get('/stores', (req, res) => {
@@ -14,7 +23,7 @@ router.post('/register-store', async (req, res) => {
     const { nome, localizacao, telefone, email } = req.body;
 
     try {
-        const novaLoja = await adicionarLoja(nome, localizacao, telefone, email);
+        const novaLoja = await inserirLoja(nome, localizacao, telefone, email);
         res.status(201).json({ message: 'Loja adicionada com sucesso!', loja: novaLoja });
     } catch (erro) {
         res.status(500).json({ message: 'Erro ao adicionar loja', error: erro.message });
@@ -39,7 +48,7 @@ router.delete('/delete-store/:id', async (req, res) => {
     const { id } = req.params;
 
     try {
-        await removerLoja(id);
+        await deletarLoja(id);
         res.status(200).json({ message: 'Loja removida com sucesso!' });
     } catch (erro) {
         res.status(500).json({ message: 'Erro ao remover loja', error: erro.message });
