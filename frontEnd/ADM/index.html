@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferte e Ganhe - Sistema de Gestão de Talões</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="img/logo.svg" alt="Logo Oferte e Ganhe" />
+            Oferte e Ganhe
+        </div>
+        <ul>
+            <li><a href="#" onclick="showSection('dashboard')">Dashboard</a></li>
+            <li><a href="#" onclick="showSection('envio')">Envio de Talões</a></li>
+            <li><a href="#" onclick="showSection('recebimento')">Recebimento de Talões</a></li>
+            <li><a href="#" onclick="showSection('manutencao-taloes')">Manutenção de Talões</a></li>
+            <li><a href="#" onclick="showSection('estoque')">Estoque</a></li>
+            <li><a href="#" onclick="showSection('perfis')">Perfis de Acesso</a></li>
+            <li><a href="#" onclick="showSection('lojas')">Lojas</a></li>
+            <li><a href="#" onclick="showSection('usuarios')">Usuários</a></li>
+            <li><a href="#" onclick="showSection('relatorios')">Relatórios</a></li>
+            <li><a href="#" onclick="showSection('login')">Login</a></li>
+        </ul>
+        <div class="user-profile">
+            <span>Admin</span>
+            <a href="#">Logout</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Dashboard -->
+        <section id="dashboard" class="section active">
+            <header>
+                <h1>Bem-vindo ao Sistema de Gestão de Talões</h1>
+            </header>
+            <div class="dashboard">
+                <div class="card">
+                    <h2>Talões Enviados</h2>
+                    <p>100</p>
+                </div>
+                <div class="card">
+                    <h2>Talões Recebidos</h2>
+                    <p>80</p>
+                </div>
+                <div class="card">
+                    <h2>Estoque Atual</h2>
+                    <p>20</p>
+                </div>
+                <div class="card">
+                    <h2>Usuários Ativos</h2>
+                    <p>15</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Envio de Talões -->
+        <section id="envio" class="section">
+            <header>
+                <h1>Envio de Talões</h1>
+                <p>Registre e os talões enviados para as lojas.</p>
+            </header>
+            <form id="formEnvio">
+                <label for="dataEnvio">Data de Envio:</label>
+                <input type="date" id="dataEnvio" name="dataEnvio" required><br><br>
+
+                <label for="loja">Loja Destinatária:</label>
+                <input type="text" id="loja" name="loja" required><br><br>
+
+                <label for="quantidade">Quantidade de Talões:</label>
+                <input type="number" id="quantidade" name="quantidade" required><br><br>
+
+                <label for="numeroRemessa">Número da Remessa:</label>
+                <input type="text" id="numeroRemessa" name="numeroRemessa" required><br><br>
+
+                <label for="dataEntrega">Data de Entrega Prevista:</label>
+                <input type="date" id="dataEntrega" name="dataEntrega" required><br><br>
+
+                <label for="status">Status:</label>
+                <select id="status" name="status">
+                    <option value="enviado">Enviado</option>
+                    <option value="entregue">Entregue</option>
+                    <option value="recebido">Recebido</option>
+                </select><br><br>
+
+                <button type="submit">Registrar Envio</button>
+            </form>
+            <div class="historico-envios">
+                <h2>Histórico de Envios</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID do Talão</th>
+                            <th>Data de Envio</th>
+                            <th>Loja Destinatária</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>001</td>
+                            <td>20/10/2024</td>
+                            <td>Loja A</td>
+                            <td>Enviado</td>
+                        </tr>
+                        <tr>
+                            <td>002</td>
+                            <td>18/10/2024</td>
+                            <td>Loja B</td>
+                            <td>Recebido</td>
+                        </tr>
+                        <!-- Linhas do histórico de envios serão inseridas dinamicamente -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="consulta-taloes">
+                <h2>Consulta de Talões</h2>
+                <!-- Campos para consulta de talões -->
+                <input type="text" id="consulta-talao" placeholder="Digite o ID do talão para consultar">
+                <button>Consultar</button>
+                <div id="resultado-consulta">
+                    <!-- Resultado da consulta exibido aqui -->
+                </div>
+            </div>
+        </section>
+
+       <!-- Recebimento de Talões-->
+<section id="recebimento" class="section">
+    <header>
+        <h1>Recebimento de Talões</h1>
+        <p>Monitore o recebimento de talões enviados às lojas.</p>
+    </header>
+    
+    <form id="formRecebimento">
+        <label for="dataRecebimento">Data de Recebimento:</label>
+        <input type="date" id="dataRecebimento" name="dataRecebimento" required><br><br>
+
+        <label for="lojaRecebida">Loja Recebedora:</label>
+        <input type="text" id="lojaRecebida" name="lojaRecebida" required><br><br>
+
+        <label for="quantidadeRecebida">Quantidade Recebida:</label>
+        <input type="number" id="quantidadeRecebida" name="quantidadeRecebida" required><br><br>
+
+        <button type="submit">Confirmar Recebimento</button>
+    </form>
+
+    <!-- Histórico de Recebimentos -->
+    <div class="historico-recebimentos">
+        <h2>Histórico de Recebimentos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID do Talão</th>
+                    <th>Data de Recebimento</th>
+                    <th>Loja Recebedora</th>
+                    <th>Quantidade Recebida</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>001</td>
+                    <td>21/10/2024</td>
+                    <td>Loja A</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td>19/10/2024</td>
+                    <td>Loja B</td>
+                    <td>30</td>
+                </tr>
+                <!-- Linhas de histórico serão adicionadas dinamicamente -->
+            </tbody>
+        </table>
+    </div>
+    <br><br>
+    <!-- Consulta de Recebimentos -->
+    <div class="consulta-recebimentos">
+        <h2>Consulta de Recebimentos</h2>
+        <input type="text" id="consulta-recebimento" placeholder="Digite o ID do talão para consultar">
+        <button>Consultar</button>
+        <div id="resultado-consulta-recebimento">
+            <!-- Resultado da consulta será exibido aqui -->
+        </div>
+    </div>
+</section>
+
+
+<div class="container">
+
+
+    <!-- Section Manutenção de Talões -->
+    <section id="manutencao-taloes" class="section">
+        <h1>Manutenção de Talões</h1>
+        <br>
+        <div class="taloes-pesquisa">
+            <label for="pesquisar-talao">Pesquisar Talão:</label>
+            <input type="text" id="pesquisar-talao" placeholder="Digite o número do talão...">
+            <button class="btn">Pesquisar</button>
+        </div>
+        <br>
+        <div class="taloes-lista">
+            <h2>Talões Enviados</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Número do Talão</th>
+                        <th>Data de Envio</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>001</td>
+                        <td>15/10/2024</td>
+                        <td>Pendente</td>
+                        <td class="actions">
+                            <button class="btn">Editar</button>
+                            <button class="btn">Excluir</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <td>20/10/2024</td>
+                        <td>Enviado</td>
+                        <td class="actions">
+                            <button class="btn">Editar</button>
+                            <button class="btn">Excluir</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+
+    <!-- Gestão de Estoque-->
+<section id="estoque" class="section">
+    <header>
+        <h1>Gestão de Estoque</h1>
+        <p>Gerencie o estoque de talões disponíveis.</p>
+    </header>
+    <div class="card estoque-info">
+        <p><strong>Estoque Atual:</strong> 20 Talões</p>
+        <button>Adicionar Mais Talões</button>
+    </div>
+</section>
+
+
+        <!-- Perfis de Acesso-->
+<section id="perfis" class="section">
+    <header>
+        <h1>Gestão de Perfis de Acesso</h1>
+        <p>Crie, edite, exclua perfis e vincule usuários para definir permissões.</p>
+    </header>
+    <br>
+    
+    <!-- Formulário para criar novo perfil -->
+    <form id="formPerfil">
+        <label for="perfil">Nome do Perfil:</label>
+        <input type="text" id="perfil" name="perfil" required><br><br>
+
+        <label for="modulos">Permissões:</label>
+        <select id="modulos" name="modulos" multiple required>
+            <option value="envio">Envio de Talões</option>
+            <option value="recebimento">Recebimento de Talões</option>
+            <option value="estoque">Gestão de Estoque</option>
+            <option value="usuarios">Gestão de Usuários</option>
+        </select><br><br>
+
+        <button type="submit">Criar Perfil</button>
+    </form>
+
+    <!-- Tabela de perfis existentes -->
+    <div class="profile-management">
+        <h2>Lista de Perfis</h2>
+        <table class="table-profiles">
+            <thead>
+                <tr>
+                    <th>Perfil</th>
+                    <th>Permissões</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Administrador</td>
+                    <td>Envio, Recebimento, Estoque, Usuários</td>
+                    <td>
+                        <button class="edit-btn">Editar</button>
+                        <button class="delete-btn">Excluir</button>
+                    </td>
+                </tr>
+                <!-- Outras entradas podem ser adicionadas aqui -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Vincular usuário a perfil -->
+    <form id="formVinculo">
+        <h2>Vincular Usuário a Perfil</h2>
+        <label for="usuarioPerfil">Selecione o Usuário:</label>
+        <select id="usuarioPerfil" name="usuarioPerfil" required>
+            <option value="joao">João Silva</option>
+            <!-- Outros usuários -->
+        </select><br><br>
+
+        <label for="perfilVinculo">Selecione o Perfil:</label>
+        <select id="perfilVinculo" name="perfilVinculo" required>
+            <option value="admin">Administrador</option>
+            <!-- Outros perfis -->
+        </select><br><br>
+
+        <button type="submit">Vincular</button>
+    </form>
+
+    <!-- Tabela de associações existentes -->
+    <div class="profile-association">
+        <h2>Associações de Perfis</h2>
+        <table class="table-associations">
+            <thead>
+                <tr>
+                    <th>Usuário</th>
+                    <th>Perfil</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>João Silva</td>
+                    <td>Administrador</td>
+                    <td>
+                        <button class="edit-assoc-btn">Alterar</button>
+                        <button class="delete-assoc-btn">Remover</button>
+                    </td>
+                </tr>
+                <!-- Outras associações -->
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<div class="container">
+
+    <!-- Seção única para Gerenciamento de Lojas -->
+    <section id="lojas" class="section">
+        <h1>Gerenciamento de Lojas</h1>
+      <!-- Formulário para Cadastro de Lojas -->
+      <div class="cadastro-loja">
+        <p>Cadastro de Nova Loja</p>
+        <br>
+        <form id="form-loja">
+          <label for="codigo-loja">Código da Loja:</label>
+          <input type="text" id="codigo-loja" name="codigo-loja" required>
+          
+          <label for="nome-loja">Nome da Loja:</label>
+          <input type="text" id="nome-loja" name="nome-loja" required>
+          
+          <button type="submit">Cadastrar Loja</button>
+        </form>
+      </div>
+      <br>
+      <!-- Tabela de Visualização das Lojas -->
+      <div class="visualizacao-lojas">
+        <h2>Visualização de Lojas</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nome da Loja</th>
+            </tr>
+        </thead>
+        <tbody id="lista-lojas">
+            <!-- Exemplo de lojas cadastradas -->
+            <tr>
+                <td>001</td>
+                <td>Loja A</td>
+            </tr>
+            <tr>
+                <td>002</td>
+                <td>Loja B</td>
+            </tr>
+            <tr>
+                <td>003</td>
+                <td>Loja C</td>
+            </tr>
+            <tr>
+                <td>004</td>
+                <td>Loja D</td>
+            </tr>
+            <tr>
+                <td>005</td>
+                <td>Loja E</td>
+            </tr>
+        </tbody>
+    </table>
+      </div>
+      <br><br>
+      <!-- Dashboard de Atividades -->
+      <div class="dashboard">
+        <h2>Dashboard de Atividades</h2>
+        <div class="dash-container">
+          <div class="dash-item">
+            <p>Total de Lojas</p>
+            <span id="total-lojas">0</span>
+          </div>
+          <div class="dash-item">
+            <p>Atividades Recentes</p>
+            <span>Acompanhe as ações realizadas</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+ <!-- Usuários -->
+<section id="usuarios" class="section">
+    <header>
+        <h1>Gestão de Usuários</h1>
+        <p>Adicione, edite e exclua usuários do sistema.</p>
+    </header>
+    <br>
+    <form id="formUsuario">
+        <label for="nomeUsuario">Nome Completo:</label>
+        <input type="text" id="nomeUsuario" name="nomeUsuario" required placeholder="Digite o nome completo...">
+
+        <label for="matriculaUsuario">Matrícula:</label>
+        <input type="text" id="matriculaUsuario" name="matriculaUsuario" required placeholder="Digite a matrícula...">
+
+        <label for="emailUsuario">E-mail:</label>
+        <input type="email" id="emailUsuario" name="emailUsuario" required placeholder="Digite o e-mail...">
+
+        <label for="senhaUsuario">Senha:</label>
+        <input type="password" id="senhaUsuario" name="senhaUsuario" required placeholder="Digite a senha...">
+
+        <button type="submit">Cadastrar Usuário</button>
+    </form>
+
+    <div class="user-management">
+        <h2>Lista de Usuários</h2>
+        <table class="table-users">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Matrícula</th>
+                    <th>E-mail</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>João Silva</td>
+                    <td>12345</td>
+                    <td>joao@email.com</td>
+                    <td>
+                        <button class="edit-btn">Editar</button>
+                        <button class="delete-btn">Excluir</button>
+                    </td>
+                </tr>
+                <!-- Outras entradas podem ser adicionadas aqui -->
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+     <!-- Relatórios -->
+<section id="relatorios" class="section">
+    <header>
+        <h1>Relatórios</h1>
+        <p>Gere relatórios do sistema.</p>
+    </header>
+    <br>
+    <div class="report-buttons">
+        <button>Gerar Relatório de Perfis de Usuários</button>
+        <button>Gerar Relatório de Talões Enviados</button>
+        <button>Gerar Relatório de Recebimento</button>
+        <button>Gerar Relatório de Manutenção de Talões</button>
+        <button>Gerar Relatório de Estoque</button>
+    </div>
+</section>
+
+
+        <!-- Login -->
+        <section id="login" class="section">
+            <header>
+                <h1>Login</h1>
+                <p>Acesse sua conta.</p>
+            </header>
+            <br>
+            <form id="formLogin">
+                <label for="usuario">Usuário:</label>
+                <input type="text" id="usuario" name="usuario" required><br><br>
+
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" required><br><br>
+
+                <button type="submit">Entrar</button>
+            </form>
+        </section>
+    </div>
+
+</body>
+</html>

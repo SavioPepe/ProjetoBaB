@@ -1,0 +1,243 @@
+/* Reset e Fonte */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Navegação */
+nav {
+    background-color: #24723b;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav .user-profile {
+    display: flex;
+    align-items: center;
+}
+
+nav .user-profile span {
+    margin-right: 10px;
+}
+
+/* Container */
+.container {
+    padding: 20px;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+/* Formulários e Cartões */
+.card, form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #24723b;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1e5f32;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+/* Tabelas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #24723b;
+    color: white;
+}
+
+/* Tabelas Específicas */
+.table-users, .table-profiles, .table-associations {
+    margin-top: 20px;
+}
+
+.table-users td button, 
+.table-profiles td button, 
+.table-associations td button {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.table-users td button:hover, 
+.table-profiles td button:hover, 
+.table-associations td button:hover {
+    background-color: #ff3333;
+}
+
+/* Formulários de Perfis e Associações */
+#formPerfil, #formVinculo {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Seções para Talões e Recebimentos */
+.envio-talões, .historico-envios, .consulta-taloes,
+.historico-recebimento, .consulta-recebimento{
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+h2 {
+    color: #008000; /* Verde */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    .table-users, .table-profiles, .table-associations {
+        font-size: 14px;
+    }
+}
+
+/* Dashboard de Atividades */
+.dashboard {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.dash-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.dash-item {
+    background: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: calc(50% - 10px);
+}
+
+.dash-item p {
+    font-weight: bold;
+}
+
+#total-lojas {
+    font-size: 1.8em;
+    color: #24723b;
+}
+
+.estoque-info {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    text-align: center;
+}
+
+.estoque-info p {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+.estoque-info button {
+    background-color: #24723b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.estoque-info button:hover {
+    background-color: #1e5f32;
+}
